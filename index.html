@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Diversification Webinar – Dhanavruksha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#cb9f42;--gold-l:#e0b855;--gold-d:#8B6A1A;
+  --navy:#ffffff;--n2:#f5f5f5;--n3:#f9f8f6;--n4:#f0ede6;
+  --text:#111111;--muted:#555555;--soft:#444444;
+  --accent:#b08a28;--red:#FF3333;
+  --max:1200px;--gap:clamp(16px,3vw,40px);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Noto Sans Tamil',sans-serif;background:#ffffff;color:#111111;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ═══ NAV ═══ */
+nav{
+  position:sticky;top:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(20px,5vw,60px);
+  background:rgba(255,255,255,0.97);
+  border-bottom:1px solid rgba(203,159,66,0.25);
+  backdrop-filter:blur(20px);
+}
+.nav-logo{line-height:1.15}
+.nav-logo strong{display:block;font-size:clamp(13px,1.6vw,17px);font-weight:900;letter-spacing:0.06em;color:#111111;text-transform:uppercase}
+.nav-logo span{font-size:clamp(8px,1vw,10px);letter-spacing:0.14em;color:#888888;text-transform:uppercase;font-weight:400}
+.nav-cta{
+  background:var(--gold);color:#ffffff;
+  font-size:clamp(11px,1.2vw,13px);font-weight:800;
+  padding:9px 22px;border-radius:40px;text-decoration:none;
+  white-space:nowrap;letter-spacing:0.04em;
+  transition:all .2s ease;
+}
+.nav-cta:hover{background:var(--gold-d);transform:translateY(-1px)}
+
+/* ═══ HERO — contained card style ═══ */
+.hero{
+  position:relative;
+  background:#f5f0e8;
+  padding:clamp(32px,5vw,60px) clamp(16px,4vw,40px) clamp(40px,6vw,72px);
+  border-bottom:1px solid rgba(203,159,66,0.2);
+}
+.hero-card{
+  max-width:860px;
+  margin:0 auto;
+  background:#ffffff;
+  border-radius:24px;
+  border:1.5px solid rgba(203,159,66,0.3);
+  box-shadow:0 8px 48px rgba(0,0,0,0.10);
+  overflow:hidden;
+}
+/* gold top stripe */
+.hero-card-stripe{
+  background:linear-gradient(90deg,#cb9f42,#e0b855 50%,#cb9f42);
+  height:5px;
+}
+.hero-card-body{
+  padding:clamp(28px,5vw,52px) clamp(24px,5vw,52px) clamp(32px,5vw,48px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+/* pill inside card */
+.live-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(203,159,66,0.4);background:rgba(203,159,66,0.08);
+  border-radius:40px;padding:7px 16px;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:22px;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:blink 1.8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* h1 inside card — 2 lines */
+.hero-h1{
+  font-size:clamp(28px,4.8vw,58px);
+  font-weight:900;line-height:1.15;letter-spacing:-.02em;
+  color:#111111;
+  margin-bottom:14px;max-width:760px;
+  word-break:keep-all;
+}
+.hero-h1 .gold{color:var(--gold)}
+
+.hero-sub{
+  font-size:clamp(14px,1.5vw,17px);color:#555555;line-height:1.7;
+  margin-bottom:0;max-width:560px;
+}
+
+/* divider inside card */
+.hero-divider{
+  width:100%;border:none;border-top:1px solid rgba(0,0,0,0.07);
+  margin:24px 0;
+}
+
+/* info row inside card */
+.hero-info-row{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;
+  margin-bottom:28px;
+}
+.hinfo{
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:600;color:#333333;
+}
+.hinfo svg{color:var(--gold);flex-shrink:0}
+.hinfo.red{color:#e05555}
+
+/* CTA inside card */
+.hero-cta{
+  display:inline-block;
+  background:var(--gold);
+  color:#ffffff;font-size:clamp(15px,1.6vw,18px);font-weight:800;
+  padding:17px clamp(32px,4vw,56px);border-radius:50px;text-decoration:none;
+  box-shadow:0 6px 28px rgba(203,159,66,0.38);
+  transition:all .25s ease;letter-spacing:.02em;
+  animation:shimmer 3.5s linear infinite;
+  background:linear-gradient(135deg,#D4AA50,#F0CC70 50%,#C9A44A);
+  background-size:200% 100%;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(203,159,66,0.5)}
+.hero-cta:active{transform:scale(.98)}
+
+.seats-note{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:12px;
+  font-size:12px;color:#e05555;font-weight:600;
+}
+
+/* bottom meta strip inside card */
+.hero-meta-strip{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  margin-top:28px;padding-top:22px;
+  border-top:1px solid rgba(0,0,0,0.07);
+  width:100%;
+}
+.mpill{
+  display:flex;align-items:center;gap:7px;
+  background:#f9f7f2;border:1px solid rgba(203,159,66,0.2);
+  border-radius:40px;padding:7px 14px;font-size:12px;color:#444444;
+}
+.mpill svg{flex-shrink:0}
+
+@media(max-width:600px){
+  .hero-h1{font-size:clamp(26px,7vw,40px)}
+  .hero-card-body{padding:24px 20px 28px}
+}
+
+/* ═══ CONTAINER SYSTEM ═══ */
+.page-wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+
+/* two-col for desktop sections */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:860px){
+  .two-col{grid-template-columns:1fr}
+  .three-col{grid-template-columns:1fr}
+  .four-col{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .four-col{grid-template-columns:1fr 1fr}
+}
+
+/* ═══ SECTION BASICS ═══ */
+section{padding:clamp(48px,7vw,88px) 0}
+.sec-inner{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+hr.sep{border:none;border-top:1px solid rgba(0,0,0,0.08)}
+.sec-eyebrow{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.sec-h2{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-.02em;color:#111111;line-height:1.2;margin-bottom:28px}
+
+/* ═══ SPEAKER SECTION ═══ */
+.speaker-card{
+  background:linear-gradient(145deg,#faf8f3,#f5f2ea);
+  border:1px solid rgba(203,159,66,0.25);border-radius:20px;padding:32px;
+}
+.spk-head{display:flex;gap:22px;align-items:flex-start;margin-bottom:24px}
+.spk-avatar{
+  width:82px;height:82px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#cb9f42,#e0b855);
+  border:2px solid rgba(201,164,74,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:900;color:#ffffff;
+}
+.spk-name{font-size:clamp(18px,2vw,24px);font-weight:800;color:#111111;margin-bottom:3px;letter-spacing:-.01em}
+.spk-role{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;background:rgba(203,159,66,0.12);border:1px solid rgba(203,159,66,0.3);color:#8b6a14;letter-spacing:.02em}
+.spk-bio{font-size:14px;color:#555555;line-height:1.75;border-top:1px solid rgba(0,0,0,0.08);padding-top:20px}
+.spk-bio strong{color:#111111;font-weight:600}
+.tv-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.tv-tag{font-size:11px;padding:4px 10px;border-radius:16px;background:rgba(203,159,66,0.08);border:1px solid rgba(203,159,66,0.25);color:#8b6a14}
+
+/* speaker right side — articles */
+.article-stack{display:flex;flex-direction:column;gap:14px}
+.article-card{
+  background:#ffffff;border:1px solid rgba(0,0,0,0.09);border-radius:14px;
+  padding:16px 18px;display:flex;align-items:flex-start;gap:12px;
+  text-decoration:none;color:inherit;transition:all .2s ease;box-shadow:0 1px 4px rgba(0,0,0,0.04);
+}
+.article-card:hover{border-color:rgba(201,164,74,.3);transform:translateX(4px)}
+.article-pub{
+  width:38px;height:38px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(201,164,74,.1);font-size:10px;font-weight:800;color:var(--gold);text-align:center;line-height:1.1
+}
+.article-title{font-size:13px;font-weight:600;color:#111111;line-height:1.4;margin-bottom:4px}
+.article-meta{font-size:11px;color:#888888}
+.linkedin-card{
+  background:rgba(10,102,194,.08);border:1px solid rgba(10,102,194,.2);border-radius:14px;
+  padding:16px 18px;display:flex;align-items:center;gap:12px;
+  text-decoration:none;transition:all .2s ease;
+}
+.linkedin-card:hover{background:rgba(10,102,194,.14);transform:translateX(4px)}
+.li-icon{width:38px;height:38px;border-radius:8px;background:#0A66C2;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.li-text strong{display:block;font-size:13px;font-weight:700;color:#111111}
+.li-text span{font-size:12px;color:#666666}
+
+/* ═══ YOUTUBE HANDLES ═══ */
+.handle-card{
+  background:#ffffff;border:1px solid rgba(0,0,0,0.09);border-radius:16px;
+  padding:22px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+  text-decoration:none;transition:all .22s ease;box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.handle-card:hover{border-color:rgba(255,51,51,.35);background:rgba(255,51,51,.04);transform:translateY(-3px)}
+.yt-ball{width:48px;height:48px;border-radius:50%;background:rgba(255,51,51,.12);display:flex;align-items:center;justify-content:center}
+.hd-lang{font-size:14px;font-weight:700;color:#111111}
+.hd-url{font-size:11px;color:var(--muted)}
+.sub-btn{font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;background:var(--red);color:#fff;letter-spacing:.03em}
+
+/* ═══ VIDEO CARDS ═══ */
+.video-card{
+  background:#ffffff;border:1px solid rgba(0,0,0,0.09);border-radius:16px;
+  overflow:hidden;text-decoration:none;display:flex;flex-direction:column;
+  transition:all .22s ease;box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.video-card:hover{border-color:rgba(203,159,66,0.5);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.vid-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f0ede6}
+.vid-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+.video-card:hover .vid-thumb img{transform:scale(1.04)}
+.vid-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35)}
+.vid-play-circle{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center}
+.vid-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;gap:6px}
+.vid-ch{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.vid-title{font-size:14px;font-weight:600;color:#111111;line-height:1.45;flex:1}
+.vid-watch{font-size:12px;color:#888888;display:flex;align-items:center;gap:4px;margin-top:6px}
+
+/* ═══ ABOUT DV ═══ */
+.dv-box{
+  background:linear-gradient(145deg,#faf8f3,#f5f2ea);
+  border:1px solid rgba(203,159,66,0.25);border-radius:20px;padding:32px;
+}
+.dv-brand{font-size:clamp(22px,2.5vw,30px);font-weight:900;color:var(--gold);letter-spacing:-.01em;margin-bottom:2px}
+.dv-etym{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:10px}
+.dv-tagline{font-size:clamp(15px,1.6vw,18px);font-weight:700;color:#111111;margin-bottom:14px;line-height:1.3}
+.dv-para{font-size:14px;color:#555555;line-height:1.8}
+
+.stat-card{
+  background:#ffffff;border:1px solid rgba(203,159,66,0.2);border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  padding:clamp(16px,2vw,24px);text-align:center;
+}
+.stat-num{font-size:clamp(26px,3vw,40px);font-weight:900;color:var(--gold);letter-spacing:-.02em;line-height:1;margin-bottom:8px}
+.stat-lbl{font-size:clamp(11px,1.1vw,13px);color:#666666;line-height:1.4}
+
+/* ═══ REGISTER ═══ */
+.reg-section{
+  background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(203,159,66,0.07) 0%,transparent 70%),
+             linear-gradient(180deg,#ffffff 0%,#fffdf8 100%);
+}
+.reg-box{
+  background:linear-gradient(145deg,#faf7ee,#fffdf8);
+  border:1.5px solid rgba(203,159,66,0.4);border-radius:24px;
+  padding:clamp(32px,5vw,56px) clamp(24px,4vw,56px);
+  text-align:center;max-width:700px;margin:0 auto;
+}
+.reg-ey{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
+.reg-h{font-size:clamp(22px,3.5vw,36px);font-weight:900;color:#111111;letter-spacing:-.02em;margin-bottom:10px;line-height:1.2}
+.reg-sub{font-size:clamp(13px,1.4vw,16px);color:#555555;margin-bottom:32px;line-height:1.65}
+.reg-cta{
+  display:block;max-width:440px;margin:0 auto;text-align:center;
+  background:linear-gradient(135deg,#D4AA50,#F0CC70 50%,#C9A44A);
+  background-size:200% 100%;
+  color:#ffffff;font-size:clamp(15px,1.6vw,19px);font-weight:800;
+  padding:clamp(16px,2vw,22px) 32px;border-radius:50px;text-decoration:none;
+  box-shadow:0 10px 40px rgba(201,164,74,.38);
+  transition:all .3s ease;animation:shimmer 3.5s linear infinite;letter-spacing:.02em;
+}
+.reg-cta:hover{transform:translateY(-3px);box-shadow:0 18px 52px rgba(201,164,74,.55)}
+.reg-perks{display:flex;justify-content:center;flex-wrap:wrap;gap:18px 28px;margin-top:22px}
+.perk{display:flex;align-items:center;gap:7px;font-size:13px;color:#555555}
+.perk.hot{color:#F87171}
+.pdot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.perk.hot .pdot{background:#F87171}
+
+/* ═══ FOOTER ═══ */
+footer{
+  padding:28px clamp(20px,5vw,60px) 80px;
+  border-top:1px solid rgba(0,0,0,0.08);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  max-width:var(--max);margin:0 auto;
+}
+.ft-brand{font-size:14px;font-weight:800;color:#111111}
+.ft-copy{font-size:11px;color:#888888}
+footer-wrap{max-width:var(--max);margin:0 auto;}
+
+/* ═══ STICKY BAR ═══ */
+.sticky{
+  position:fixed;bottom:0;left:0;right:0;z-index:998;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(20px);
+  border-top:1px solid rgba(203,159,66,0.25);
+  padding:12px clamp(16px,4vw,48px);
+  display:flex;align-items:center;justify-content:center;gap:20px;
+}
+.sticky-info{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.sticky-pill{font-size:12px;color:#555555;display:flex;align-items:center;gap:6px}
+.sticky-pill svg{color:var(--gold)}
+@media(max-width:600px){.sticky-info{display:none}}
+.sticky-btn{
+  background:var(--gold);color:#ffffff;
+  font-size:14px;font-weight:800;padding:13px 32px;
+  border-radius:40px;text-decoration:none;white-space:nowrap;
+  letter-spacing:.03em;transition:all .2s ease;flex-shrink:0;
+}
+.sticky-btn:hover{background:var(--gold-l);transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-logo">
+    <strong>Dhanavruksha</strong>
+    <span>Financial Services</span>
+  </div>
+  <a href="https://forms.gle/Ya4UUEuCioaLnj6Z9" target="_blank" class="nav-cta">Register Free →</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-card">
+    <div class="hero-card-stripe"></div>
+    <div class="hero-card-body">
+
+      <div class="live-pill"><span class="live-dot"></span>Free Webinar · Sunday, July 19 · 11 AM IST</div>
+
+      <h1 class="hero-h1">ஒரே சந்தையை நம்பியதால்<br><span class="gold">நீங்கள் இழந்தது என்ன தெரியுமா?</span></h1>
+
+      <p class="hero-sub">உலகளாவிய முதலீடுகள் உங்கள் செல்வத்தை எப்படி மேம்படுத்தியிருக்கும்?</p>
+
+      <hr class="hero-divider">
+
+      <div class="hero-info-row">
+        <div class="hinfo">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Sunday, July 19, 2025
+        </div>
+        <div class="hinfo">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11:00 AM IST
+        </div>
+        <div class="hinfo">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Live Q&A
+        </div>
+        <div class="hinfo">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Online · Zoom
+        </div>
+        <div class="hinfo red">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Limited to 50 Members
+        </div>
+      </div>
+
+      <a href="https://forms.gle/Ya4UUEuCioaLnj6Z9" target="_blank" class="hero-cta">Register for Free — Secure Your Seat</a>
+      <div><span class="seats-note">No fee. Seats filling fast — register now.</span></div>
+
+      <div class="hero-meta-strip">
+        <div class="mpill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          100% Free
+        </div>
+        <div class="mpill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Live Q&A Included
+        </div>
+        <div class="mpill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Recording Shared
+        </div>
+        <div class="mpill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Conducted by Expert — 24 Yrs Experience
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══ SPEAKER ═══ -->
+<section>
+  <div class="sec-inner">
+    <p class="sec-eyebrow">About the Speaker</p>
+    <div class="two-col">
+      <!-- LEFT -->
+      <div class="speaker-card">
+        <div class="spk-head">
+          
+          <div>
+            <div class="spk-name">V. Krishna Dassan</div>
+            <div class="spk-role">Director – Wealth Management, Dhanavruksha</div>
+            <div class="chips">
+              <span class="chip">24 Yrs Experience</span>
+              <span class="chip">Ex-ICICI Bank</span>
+              <span class="chip">IIT Madras Speaker</span>
+              <span class="chip">LinkedIn Influencer</span>
+            </div>
+          </div>
+        </div>
+        <div class="spk-bio">
+          <strong>V. Krishna Dassan</strong> brings 24 years of expertise in Wealth Management, with leadership roles at <strong>Centurion Bank (HDFC Bank), Cholamandalam, Emkay Global, Spark Investment Advisors</strong> and most notably <strong>ICICI Bank</strong> — where he headed Wealth Management for a large part of Tamil Nadu.<br><br>
+          He addresses investor seminars across South India at corporates like <strong>IOCL, Rane, Wheels India, TVS Srichakra</strong> and <strong>IIT Madras</strong>. He contributes regularly to <strong>The Mint, Financial Express</strong> and <strong>Outlook</strong>.
+          <div class="tv-row">
+            <span class="tv-tag">Sun News</span>
+            <span class="tv-tag">Puthiya Thalaimurai</span>
+            <span class="tv-tag">Thanthi TV</span>
+            <span class="tv-tag">Puthuyugam</span>
+            <span class="tv-tag">Kalaignar TV</span>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT — articles -->
+      <div class="article-stack">
+        <p class="sec-h2" style="margin-bottom:16px">Featured in National Media</p>
+
+        <a href="https://www.livemint.com/money/personal-finance/should-you-take-debt-exposure-via-hybrid-funds-pros-and-cons-you-must-know-11744273788364.html" target="_blank" class="article-card">
+          <div class="article-pub">Mint</div>
+          <div>
+            <div class="article-title">Should you take debt exposure via hybrid funds? Pros and cons you must know</div>
+            <div class="article-meta">Live Mint · April 2025</div>
+          </div>
+        </a>
+
+        <a href="https://www.livemint.com/money/personal-finance/fixed-deposits-safe-investment-or-risky-gamble-what-you-need-to-understand-11735537809836.html" target="_blank" class="article-card">
+          <div class="article-pub">Mint</div>
+          <div>
+            <div class="article-title">Fixed Deposits: Safe investment or risky gamble? What you need to understand</div>
+            <div class="article-meta">Live Mint · December 2024</div>
+          </div>
+        </a>
+
+        <a href="https://www.livemint.com/mutual-fund/bear-market-blues-should-you-hold-sell-or-buy-more-equity-mutual-funds-now-nifty-stock-market-11731912080920.html" target="_blank" class="article-card">
+          <div class="article-pub">Mint</div>
+          <div>
+            <div class="article-title">Bear Market Blues: Should you hold, sell, or buy more equity mutual funds now?</div>
+            <div class="article-meta">Live Mint · November 2024</div>
+          </div>
+        </a>
+
+        <a href="https://www.livemint.com/insurance/5-health-insurance-policies-that-offer-advanced-benefits-to-customers-hdfc-ergo-care-supreme-healthcare-11728471221434.html" target="_blank" class="article-card">
+          <div class="article-pub">Mint</div>
+          <div>
+            <div class="article-title">5 health insurance policies that offer advanced benefits to customers</div>
+            <div class="article-meta">Live Mint · October 2024</div>
+          </div>
+        </a>
+
+        <a href="https://dhanavruksha.in/blogs" target="_blank" class="article-card" style="border-color:rgba(203,159,66,0.35);background:rgba(203,159,66,0.05)">
+          <div class="article-pub" style="background:rgba(201,164,74,.15);color:var(--gold)">All</div>
+          <div>
+            <div class="article-title" style="color:var(--gold)">View all published articles →</div>
+            <div class="article-meta">dhanavruksha.in/blogs</div>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/vkrishnadassan/" target="_blank" class="linkedin-card">
+          <div class="li-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div class="li-text">
+            <strong>linkedin.com/in/vkrishnadassan</strong>
+            <span>Social Media Influencer · Wealth Management</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══ YOUTUBE HANDLES ═══ -->
+<section>
+  <div class="sec-inner">
+    <p class="sec-eyebrow">Follow on YouTube</p>
+    <p class="sec-h2">Our Channels</p>
+    <div class="three-col">
+      <a href="https://youtube.com/@dhanavruksha_tamil?si=vtbXnsVBhVKffHhY" target="_blank" class="handle-card">
+        <div class="yt-ball">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF3333"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+        </div>
+        <div class="hd-lang">Tamil</div>
+        <div class="hd-url">@dhanavruksha_tamil</div>
+        <span class="sub-btn">Subscribe</span>
+      </a>
+      <a href="https://youtube.com/@dhanavruksha_malayalam?si=ZaMYOma3bVpg07uE" target="_blank" class="handle-card">
+        <div class="yt-ball">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF3333"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+        </div>
+        <div class="hd-lang">Malayalam</div>
+        <div class="hd-url">@dhanavruksha_malayalam</div>
+        <span class="sub-btn">Subscribe</span>
+      </a>
+      <a href="https://youtube.com/@dhanavruksha_english?si=b2K4xm6ZcFCBRhpv" target="_blank" class="handle-card">
+        <div class="yt-ball">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF3333"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+        </div>
+        <div class="hd-lang">English</div>
+        <div class="hd-url">@dhanavruksha_english</div>
+        <span class="sub-btn">Subscribe</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══ FEATURED VIDEOS ═══ -->
+<section>
+  <div class="sec-inner">
+    <p class="sec-eyebrow">Featured on Other Channels</p>
+    <p class="sec-h2">Watch V. Krishna Dassan in Action</p>
+    <div class="two-col">
+      <a href="https://youtu.be/UXbbV1BBt-s" target="_blank" class="video-card">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/UXbbV1BBt-s/hqdefault.jpg" alt="Video thumbnail">
+          <div class="vid-play">
+            <div class="vid-play-circle">
+              <svg width="14" height="16" viewBox="0 0 14 16" fill="#111"><path d="M0 0l14 8L0 16z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-ch">Guest Appearance · Tamil</div>
+          <div class="vid-title">NRI-களே மக்களே உஷார்! RBI புதிய கிடுக்கிப்பிடி ரூல்ஸ்!! NRE & NRO Accounts · FEMA சட்டம்</div>
+          <div class="vid-watch">Watch on YouTube <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+      <a href="https://youtu.be/TJa-ZpIxLQI" target="_blank" class="video-card">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/TJa-ZpIxLQI/hqdefault.jpg" alt="Video thumbnail">
+          <div class="vid-play">
+            <div class="vid-play-circle">
+              <svg width="14" height="16" viewBox="0 0 14 16" fill="#111"><path d="M0 0l14 8L0 16z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-ch">Guest Appearance · Tamil</div>
+          <div class="vid-title">ரூ.40 லட்சம் கையில் இருக்கா? Full Cash-ல வீடு வாங்கலாமா? வாடகையில் இருப்பது நல்லதா?</div>
+          <div class="vid-watch">Watch on YouTube <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══ ABOUT DV ═══ -->
+<section>
+  <div class="sec-inner">
+    <p class="sec-eyebrow">About Us</p>
+    <div class="two-col">
+      <div class="dv-box">
+        <div class="dv-brand">Dhanavruksha</div>
+        <div class="dv-etym">Dhana = Money &nbsp;·&nbsp; Vruksha = Tree</div>
+        <div class="dv-tagline">Empowering Your Financial Future,<br>One Smart Decision at a Time.</div>
+        <p class="dv-para">The vision of our founders is to nurture and grow wealth for investors at various life stages — through quality advice, curated research, and hands-on handholding throughout the wealth creation journey. We conduct periodic portfolio reviews ensuring ideal asset allocation to meet your financial goals. We offer Wealth Management Solutions tailored for HNIs and corporates: Financial Planning, Goal Planning, Tax Planning, investment and insurance structuring, and retirement planning.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="four-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="stat-card">
+            <div class="stat-num">260</div>
+            <div class="stat-lbl">Crores Assets Under Management</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">125</div>
+            <div class="stat-lbl">Crores Business Loans Facilitated</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">560</div>
+            <div class="stat-lbl">Customers Served</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">₹1.14Cr</div>
+            <div class="stat-lbl">SIP Book per Month · 330 Clients</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══ REGISTER ═══ -->
+<section class="reg-section" id="register">
+  <div class="sec-inner">
+    <div class="reg-box">
+      <div class="reg-ey">Free Webinar · Only 50 Seats Available</div>
+      <div class="reg-h">உலகளாவிய முதலீட்டு மாஸ்டர்கிளாஸ்<br><span style="font-size:clamp(14px,2vw,20px);color:#666666;font-weight:600">Global Diversification Masterclass</span></div>
+      <p class="reg-sub">Join V. Krishna Dassan live on <strong style="color:#111111">Sunday, July 19 at 11:00 AM IST</strong> and learn how to build a globally diversified, resilient investment portfolio. Ask questions, get clarity, walk away with a plan.</p>
+      <a href="https://forms.gle/Ya4UUEuCioaLnj6Z9" target="_blank" class="reg-cta">
+        Register for the Webinar — It's Free
+      </a>
+      <div class="reg-perks">
+        <div class="perk"><span class="pdot"></span>100% Free</div>
+        <div class="perk"><span class="pdot"></span>Live Q&A Included</div>
+        <div class="perk"><span class="pdot"></span>Recording Shared</div>
+        <div class="perk hot"><span class="pdot"></span>Only 50 Members — Register Fast</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div style="padding:0 clamp(20px,5vw,60px)">
+  <footer>
+    <div>
+      <div class="ft-brand">Dhanavruksha Financial Services</div>
+      <div class="ft-copy">© 2025 · All Rights Reserved</div>
+    </div>
+    <div class="ft-copy" style="text-align:right">Wealth Management · Chennai</div>
+  </footer>
+</div>
+
+<!-- ═══ STICKY BAR ═══ -->
+<div class="sticky">
+  <div class="sticky-info">
+    <div class="sticky-pill">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Sun, July 19, 2025
+    </div>
+    <div class="sticky-pill">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      11:00 AM IST
+    </div>
+    <div class="sticky-pill" style="color:#F87171">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      Only 50 seats
+    </div>
+  </div>
+  <a href="https://forms.gle/Ya4UUEuCioaLnj6Z9" target="_blank" class="sticky-btn">Register for Free →</a>
+</div>
+
+</body>
+</html>
